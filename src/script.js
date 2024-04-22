@@ -2,16 +2,12 @@ document.getElementById("weatherForm").addEventListener("submit", async function
 
     event.preventDefault();
 
-    const street = document.getElementById("street").value;
     const city = document.getElementById("city").value;
-    const postalCode = document.getElementById("postalCode").value;
     const country = document.getElementById("country").value;
 
     if(city === ""){
-
         alert("El camp carrer és obligatori");
         return;
-
     }
 
     try{
@@ -72,7 +68,7 @@ document.getElementById("weatherForm").addEventListener("submit", async function
         const forecastTemperatureElement = document.getElementById("forecastTemperature");
         const forecastWeatherDescriptionElement = document.getElementById("forecastWeatherDescription");
         const forecastWeatherIconElement = document.getElementById("forecastWeatherIcon");
-        
+
         forecastTemperatureElement.textContent = `Temperature: ${weatherData.forecast.temperature}`;
         forecastWeatherDescriptionElement.textContent = `Weather: ${weatherData.forecast.weatherDescription}`;
         forecastWeatherIconElement.src = `https:${weatherData.forecast.weatherIcon}`;
