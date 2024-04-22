@@ -58,7 +58,7 @@ document.getElementById("weatherForm").addEventListener("submit", async function
     }
 
     function displayWeatherResults(weatherData){
-        const resultContainer = document.getElementById("weatherResults");
+        
         const currentTemperatureElement = document.getElementById("temperature");
         const currentWeatherDescriptionElement = document.getElementById("weatherDescription");
         const currentWeatherIconElement = document.getElementById("weatherIcon");
@@ -69,6 +69,15 @@ document.getElementById("weatherForm").addEventListener("submit", async function
         currentWeatherDescriptionElement.textContent = `Weather: ${weatherData.current.weatherDescription}`;
         currentWeatherIconElement.src = `https:${weatherData.current.weatherIcon}`;
 
+        const forecastTemperatureElement = document.getElementById("forecastTemperature");
+        const forecastWeatherDescriptionElement = document.getElementById("forecastWeatherDescription");
+        const forecastWeatherIconElement = document.getElementById("forecastWeatherIcon");
+        
+        forecastTemperatureElement.textContent = `Temperature: ${weatherData.forecast.temperature}`;
+        forecastWeatherDescriptionElement.textContent = `Weather: ${weatherData.forecast.weatherDescription}`;
+        forecastWeatherIconElement.src = `https:${weatherData.forecast.weatherIcon}`;
+
+        const resultContainer = document.getElementById("weatherResults");
         resultContainer.classList.remove("hidden");
 
     }
