@@ -16,7 +16,7 @@ document.getElementById("weatherForm").addEventListener("submit", async function
 
     try{
 
-        const apiKey = "";
+        const apiKey = "a81a554f77024561bee164402242204";
         const currentWeatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&country=${country}&aqi=no`;
         const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&country=${country}&days=2`;
 
@@ -39,8 +39,17 @@ document.getElementById("weatherForm").addEventListener("submit", async function
                 region: currentData.location.region,
                 city: currentData.location.name,
                 country: currentData.location.country
-            }
-        }
+            },
+
+            forecast: {
+                city: forecastData.location.name,
+                country: forecastData.location.country,
+                region: forecastData.location.region,
+                weatherIcon: forecastData.forecast.forecastday[1].day.condition.icon,
+                temperature: `${forecastData.forecast.forecastday[1].day.avgtemp_c}ºC`,
+                weatherDescription: forecastData.forecast.forecastday[1].day.text,
+            },
+        };
 
         displayWeatherResults(weatherData);
 
@@ -54,7 +63,13 @@ document.getElementById("weatherForm").addEventListener("submit", async function
         const currentWeatherDescriptionElement = document.getElementById("weatherDescription");
         const currentWeatherIconElement = document.getElementById("weatherIcon");
         const currentLocationElement = document.getElementById("location");
-        const forecastTemperatureElement = 
+
+        currentLocationElement.textContent = `${weatherData.current.city}, ${weatherData.current.region}, ${weatherData.current.country}`;
+        currentTemperatureElement.textContent = `Temperature: ${weatherData.current.temperature}`;
+        currentWeatherDescriptionElement.textContent = `Weather: ${weatherData.current.weatherDescription}`;
+        currentWeatherIconElement.src = `https:${weatherData.current.weatherIcon}`;
+
+        resultContainer.classList.remove("hidden");
 
     }
 
