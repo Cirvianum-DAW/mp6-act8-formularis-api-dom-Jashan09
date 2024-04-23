@@ -43,9 +43,11 @@ document.getElementById("weatherForm").addEventListener("submit", async function
                 region: forecastData.location.region,
                 weatherIcon: forecastData.forecast.forecastday[1].day.condition.icon,
                 temperature: `${forecastData.forecast.forecastday[1].day.avgtemp_c}ºC`,
-                weatherDescription: forecastData.forecast.forecastday[1].day.text,
+                weatherDescription: forecastData.forecast.forecastday[1].day.condition.text,
             },
         };
+
+        console.log(forecastData);
 
         displayWeatherResults(weatherData);
 
